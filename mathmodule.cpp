@@ -73,25 +73,27 @@ void gcd(LL a,LL b,LL& d,LL& x, LL& y)
 /*
 二进制最大公约数基于下述事实：
 若a、b都是偶数，则gcd(a,b)=2*gcd(a/2,b/2)
-若a是奇数、b是偶数，则gcd(a,b)=gcd(a/2,b/2)
+若a是奇数、b是偶数，则gcd(a,b)=gcd(a,b/2)
 若a、b都是奇数，则gcd(a,b)=gcd((a-b)/2,b)
 */
 
-LL binary_gcd(LL x,LL y)
+//测试效果显示二进制gcd算法比普通gcd算法还慢
+
+LL binary_gcd(LL u,LL v)
 {
-  if(!x)
-    return y;
-  if(!y)
-    return x;
+  if(!u)
+    return v;
+  if(!v)
+    return u;
   LL k = 0;
-  while(!(x&1) && !(y&1))
+  while(!(u&1) && !(v&1))
   {
-    x >>= 1;
-    y >>= 1;
+    u >>= 1;
+    v >>= 1;
     k ++;
   }
   LL t = -v;
-  if(!(x&1))
+  if(v&1)
     t = u;
   while(t)
   {
