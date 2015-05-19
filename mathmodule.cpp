@@ -6,16 +6,19 @@ typedef long long LL;
 const int maxn = 10000000 + 10;
 const int maxp = 700000;
 
+int vis[maxn];//vis[i]=1,则i是合数；vis[i]=0,则i是1或者素数
+int prime[maxp];
+
 //筛素数
 void sieve(int n)
 {
  int m = (int)sqrt(n+0.5);//避免浮点误差
  memset(vis,0,sizeof(vis));
- for (int i = 2; i < m; ++i)
+ for (int i = 2; i <= m; ++i)
  {
   if (!vis[i])
   {
-   for (int j = i*i; j < n; j += i)
+   for (int j = i*i; j <= n; j += i)
    {
     vis[j] = 1;
    }
